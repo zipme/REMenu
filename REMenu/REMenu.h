@@ -114,6 +114,8 @@ typedef NS_ENUM(NSInteger, REMenuLiveBackgroundStyle) {
 @property (assign, readwrite, nonatomic) REMenuLiveBackgroundStyle liveBlurBackgroundStyle; // Available only in iOS 7
 @property (copy, readwrite, nonatomic) void (^badgeLabelConfigurationBlock)(UILabel *badgeLabel, REMenuItem *item);
 
+@property (assign, readwrite, nonatomic) UIEdgeInsets paddings;
+
 - (id)initWithItems:(NSArray *)items;
 - (void)showFromRect:(CGRect)rect inView:(UIView *)view;
 - (void)showInView:(UIView *)view;

@@ -95,6 +95,8 @@
         _bounceAnimationDuration = 0.2;
         
         _appearsBehindNavigationBar = REUIKitIsFlatMode() ? YES : NO;
+      
+        _paddings = UIEdgeInsetsZero;
     }
     return self;
 }
@@ -195,7 +197,7 @@
         if (index == self.items.count - 1)
             itemHeight += self.cornerRadius;
         
-        UIView *separatorView = [[UIView alloc] initWithFrame:CGRectMake(self.separatorOffset.width,
+        UIView *separatorView = [[UIView alloc] initWithFrame:CGRectMake(self.separatorOffset.width, self.paddings.top +
                                                                          index * self.itemHeight + index * self.separatorHeight + 40.0 + navigationBarOffset + self.separatorOffset.height,
                                                                          rect.size.width - self.separatorOffset.width,
                                                                          self.separatorHeight)];
@@ -203,7 +205,7 @@
         separatorView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
         [self.menuView addSubview:separatorView];
         
-        REMenuItemView *itemView = [[REMenuItemView alloc] initWithFrame:CGRectMake(0,
+        REMenuItemView *itemView = [[REMenuItemView alloc] initWithFrame:CGRectMake(0, self.paddings.top +
                                                                                     index * self.itemHeight + (index + 1.0) * self.separatorHeight + 40.0 + navigationBarOffset,
                                                                                     rect.size.width,
                                                                                     itemHeight)
@@ -388,7 +390,7 @@
 
 - (CGFloat)combinedHeight
 {
-    return self.items.count * self.itemHeight + self.items.count * self.separatorHeight + 40.0 + self.cornerRadius;
+    return self.items.count * self.itemHeight + self.items.count * self.separatorHeight + 40.0 + self.cornerRadius + self.paddings.top + paddings.bottom;
 }
 
 - (void)setNeedsLayout
